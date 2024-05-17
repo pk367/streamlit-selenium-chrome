@@ -9,8 +9,6 @@ This is a minimal, reproducible example of how to scrape the web with Selenium a
 
 Fork this repo, and edit `/streamlit_app.py` to customize this app to your heart's desire. :heart:
 """
-
-with st.echo():
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
     from selenium.webdriver.chrome.service import Service
