@@ -6,14 +6,17 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
 
 # Function to get People Also Ask questions and Related Searches
-@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def get_related_info(query):
-    options = webdriver.ChromeOptions()
+    options = Options()
     options.add_argument("--disable-gpu")
     options.add_argument("--headless")
     
     # Initialize WebDriver
-    driver = webdriver.Chrome(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install(), options=options)
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()),
+        options=options
+    )
     
     try:
         base_url = "https://www.google.com/search?q="
